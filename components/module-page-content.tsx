@@ -39,7 +39,7 @@ export function ModulePageContent({ module }: { module: ModuleData }) {
       </div>
 
       <div className="relative z-10">
-        <header className="border-b border-slate-800/50 backdrop-blur-md sticky top-0 z-40 bg-slate-950/80">
+        <header className="border-b border-slate-800/50 backdrop-blur-md z-40 bg-slate-950/80">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <Link
               href="/"
