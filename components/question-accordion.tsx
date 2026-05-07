@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Question } from '@/lib/data';
 import { ChevronDown } from 'lucide-react';
 
@@ -79,6 +80,17 @@ export function QuestionAccordion({ question, color, accent }: QuestionAccordion
                 <p className="text-slate-300 text-sm whitespace-pre-wrap leading-relaxed">
                   {section.body}
                 </p>
+                {section.imageSrc && (
+                  <div className="mt-3 overflow-hidden rounded-lg border border-slate-700/50 bg-slate-950/40 p-3">
+                    <Image
+                      src={section.imageSrc}
+                      alt={section.imageAlt ?? section.heading}
+                      width={900}
+                      height={600}
+                      className="h-auto w-full rounded-md"
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>

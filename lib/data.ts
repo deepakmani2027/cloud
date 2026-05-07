@@ -1,6 +1,8 @@
 export type AnswerSection = {
   heading: string;
   body: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 export type Question = {
@@ -266,27 +268,263 @@ export const modules: ModuleData[] = [
     topics: "IaaS Concepts · Abstraction & Virtualization · Hypervisors · Machine Reference Model · PaaS · SaaS · IDaaS",
     hours: "7L",
     questions: [
-      { no: 9, text: "What is server consolidation?" },
-      { no: 10, tag: "Exam Q4(a)", marks: "2", co: "CO2 · Remember/LOCQ", text: "What do you mean by Virtualization in Cloud Computing?" },
-      { no: 11, text: "Name three hardware virtualization techniques." },
-      { no: 12, text: "What are the security rings and privilege modes of instruction execution? Give a suitable schematic diagram with necessary explanation." },
-      { no: 13, text: "Discuss the roles of the following modules of a hypervisor: i) Dispatcher  ii) Allocator  iii) Interpreter" },
-      { no: 14, text: "Mention the three criteria established by Goldberg and Popek that must be met by the virtual machine manager to efficiently support virtualization." },
-      { no: 15, tag: "Exam Q5(a)", marks: "4", co: "CO2 · Analyse/IOCQ", text: "Discuss the VMware full virtualization architecture. Draw the schematic diagram and give the necessary explanation." },
-      { no: 16, text: "Discuss the hardware-assisted virtualization technique." },
-      { no: 41, text: "Distinguish between Type I and Type II hypervisors with a suitable schematic diagram and necessary explanation." },
-      { no: 42, tag: "Exam Q4(b)", marks: "3", co: "CO2 · Analyse/IOCQ", text: '"Virtualization has a number of advantages, but it also has downsides"—Justify this statement.' },
-      { no: 43, text: "What is ISA, ABI, and API with respect to a machine reference model?" },
-      { no: 44, text: 'Explain the components "guest", "host", and "virtualization layer" in a virtualized environment.' },
-      { no: 45, text: "Discuss the Xen paravirtualization architecture. Draw the schematic diagram and give the necessary explanation." },
-      { no: 69, text: "What is a middleware layer? In the Cloud, who uses the middleware layer? Who installs or manages the middleware layer in the Cloud?" },
-      { no: 70, text: "What is a SLA? Mention at least three parameters usually specified in a SLA." },
-      { no: 73, text: "What do you mean by privileged and nonprivileged instructions?" },
-      { no: 74, tag: "Exam Q4(c)", marks: "3+1+1", co: "CO2 · Understand/LOCQ", text: "Explain Full Virtualization. Mention one advantage and one disadvantage of this technique." },
-      { no: 75, text: "Explain the technique of Para Virtualization. Clearly mention one advantage and one disadvantage of this technique." },
-      { no: 76, text: "Write short notes on the following: i) Memory Virtualization  ii) Operating System level Virtualization" },
-      { no: 78, tag: "Exam Q5(c)", marks: "3+3", co: "CO1 · Remember/LOCQ", text: "Write short notes on the following: i) PaaS service model  ii) Network Virtualization  iii) SaaS service model  iv) IDaaS" },
-      { no: 95, text: "What is meant by the process-level techniques and system-level techniques in execution virtualization?" },
+      {
+        no: 9,
+        text: "What is server consolidation?",
+        answer: [
+          {
+            heading: "Q9. Server Consolidation",
+            body: "Server consolidation is the process of reducing the number of physical servers by running multiple virtual machines on a single server using virtualization.\n\nIn traditional systems, many servers remain underutilized. Virtualization allows better utilization of hardware resources.\n\nAdvantages:\n1. Reduces hardware cost\n2. Saves power and cooling cost\n3. Better resource utilization\n4. Simplifies management\n\nExample:\nOne physical server can host multiple virtual machines running different operating systems or applications.",
+          },
+        ],
+      },
+      {
+        no: 10,
+        tag: "Exam Q4(a)",
+        marks: "2",
+        co: "CO2 · Remember/LOCQ",
+        text: "What do you mean by Virtualization in Cloud Computing?",
+        answer: [
+          {
+            heading: "Q10. Virtualization in Cloud Computing",
+            body: "Virtualization is a technology that creates virtual versions of servers, storage, operating systems, or networks on a single physical machine.\n\nIt allows multiple virtual machines (VMs) to share the same hardware using a hypervisor.\n\nFeatures:\n1. Better resource utilization\n2. Isolation between VMs\n3. Easy scalability\n4. Reduced infrastructure cost\n\nExample:\nRunning Linux and Windows virtual machines on the same server.",
+          },
+        ],
+      },
+      {
+        no: 11,
+        text: "Name three hardware virtualization techniques.",
+        answer: [
+          {
+            heading: "Q11. Three Hardware Virtualization Techniques",
+            body: "The three hardware virtualization techniques are:\n1. Full Virtualization\n   Guest operating systems run without modification.\n2. Paravirtualization\n   Guest operating systems are modified to interact with the hypervisor.\n3. Hardware-Assisted Virtualization\n   CPU provides direct support for virtualization using Intel VT-x or AMD-V technologies.",
+          },
+        ],
+      },
+      {
+        no: 12,
+        text: "What are the security rings and privilege modes of instruction execution? Give a suitable schematic diagram with necessary explanation.",
+        answer: [
+          {
+            heading: "Q12. Security Rings and Privilege Modes",
+            body: "Security rings privilege levels used by CPU to protect hardware and system resources.\n\nSecurity Rings:\n• Ring 0 → Highest privilege level used by operating system kernel\n• Ring 3 → Lowest privilege level used by user applications\n\nPrivilege Modes:\n1. Kernel Mode\n   o Full access to hardware and memory\n   o Used by operating system\n2. User Mode\n   o Limited access to resources\n   o Used by application programs",
+            imageSrc: "/q12.png",
+            imageAlt: "Security rings and privilege modes diagram",
+          },
+          {
+            heading: "Importance",
+            body: "• Improves security\n• Prevents unauthorized access\n• Protects operating system",
+          },
+        ],
+      },
+      {
+        no: 13,
+        text: "Discuss the roles of the following modules of a hypervisor: i) Dispatcher  ii) Allocator  iii) Interpreter",
+        answer: [
+          {
+            heading: "Q13. Roles of Hypervisor Modules\ni) Dispatcher",
+            body: "The dispatcher manages execution of virtual machines and allocates CPU time to each VM.\n\nFunctions:\n• Schedules VM execution\n• Performs context switching",
+          },
+          {
+            heading: "ii) Allocator",
+            body: "The allocator distributes hardware resources among virtual machines.\n\nFunctions:\n• Allocates memory\n• Manages storage and network resources",
+          },
+          {
+            heading: "iii) Interpreter",
+            body: "The interpreter handles privileged instructions issued by guest operating systems.\n\nFunctions:\n• Translates sensitive instructions\n• Maintains security and isolation",
+          },
+        ],
+      },
+      {
+        no: 14,
+        text: "Mention the three criteria established by Goldberg and Popek that must be met by the virtual machine manager to efficiently support virtualization.",
+        answer: [
+          {
+            heading: "Q14. Goldberg and Popek Virtualization Criteria",
+            body: "Goldberg and Popek proposed three requirements for efficient virtualization.\n1. Equivalence\nPrograms running inside a VM should behave similarly to programs running on real hardware.\n2. Resource Control\nThe virtual machine monitor (VMM) must have complete control over hardware resources.\n3. Efficiency\nMost instructions should execute directly on hardware for better performance.\nThese criteria ensure secure and efficient virtualization.",
+          },
+        ],
+      },
+      {
+        no: 15,
+        tag: "Exam Q5(a)",
+        marks: "4",
+        co: "CO2 · Analyse/IOCQ",
+        text: "Discuss the VMware full virtualization architecture. Draw the schematic diagram and give the necessary explanation.",
+        answer: [
+          {
+            heading: "Q15. VMware Full Virtualization Architecture",
+            body: "VMware full virtualization allows unmodified guest operating systems to run on virtual machines.\nA hypervisor sits between hardware and virtual machines and controls resource allocation.\n\nArchitecture Diagram:",
+            imageSrc: "/q15.png",
+            imageAlt: "VMware full virtualization architecture diagram",
+          },
+          {
+            heading: "Working",
+            body: "1. Hypervisor creates virtual machines.\n2. Guest OS believes it is running on real hardware.\n3. Sensitive instructions are translated by the hypervisor.\n4. Hardware resources are shared among VMs.\n\nAdvantages:\n• No modification of guest OS required\n• Better isolation and resource sharing",
+          },
+        ],
+      },
+      {
+        no: 16,
+        text: "Discuss the hardware-assisted virtualization technique.",
+        answer: [
+          {
+            heading: "Q16. Hardware-Assisted Virtualization",
+            body: "Hardware-assisted virtualization uses processor support such as Intel VT-x and AMD-V for virtualization.\nThe CPU directly supports virtualization functions, reducing hypervisor overhead.\n\nWorking:\n• CPU creates separate execution environments for guest OS and hypervisor.\n• Sensitive instructions are handled efficiently by hardware.\n\nAdvantages:\n1. Better performance\n2. Improved security\n3. Supports unmodified guest OS\n4. Reduced hypervisor complexity",
+          },
+        ],
+      },
+      {
+        no: 41,
+        text: "Distinguish between Type I and Type II hypervisors with a suitable schematic diagram and necessary explanation.",
+        answer: [
+          {
+            heading: "Q41. Type I and Type II Hypervisors",
+            body: "Type I Hypervisor\nRuns directly on hardware\nBetter performance\nMore secure\nUsed in data centers\n\nType II Hypervisor\nRuns on host operating system\nLower performance\nLess secure\nUsed in personal computers\n\nType I Diagram\nType II Diagram",
+            imageSrc: "/q41.png",
+            imageAlt: "Type I and Type II hypervisor comparison diagram",
+          },
+          {
+            heading: "Examples",
+            body: "• Type I: VMware ESXi, Xen\n• Type II: VirtualBox, VMware Workstation",
+          },
+        ],
+      },
+      {
+        no: 42,
+        tag: "Exam Q4(b)",
+        marks: "3",
+        co: "CO2 · Analyse/IOCQ",
+        text: '"Virtualization has a number of advantages, but it also has downsides"—Justify this statement.',
+        answer: [
+          {
+            heading: "Q42. Advantages and Disadvantages of Virtualization",
+            body: "Virtualization provides many benefits but also has some disadvantages.\n\nAdvantages:\n1. Better hardware utilization\n2. Reduced infrastructure cost\n3. Easy backup and recovery\n4. Supports multiple operating systems\n\nDisadvantages:\n1. Performance overhead\n2. Security risks if hypervisor fails\n3. Complex management\n4. Requires skilled administrators\n\nThus, virtualization improves flexibility and efficiency but also introduces management and security challenges.",
+          },
+        ],
+      },
+      {
+        no: 43,
+        text: "What is ISA, ABI, and API with respect to a machine reference model?",
+        answer: [
+          {
+            heading: "Q43. ISA, ABI, and API",
+            body: "ISA (Instruction Set Architecture)\nISA defines the interface between hardware and software.\nIt includes:\n• Instructions\n• Registers\n• Memory addressing\nExample: x86, ARM\n\nABI (Application Binary Interface)\nABI defines interaction between compiled applications and operating system at binary level.\nIt includes:\n• System calls\n• Memory usage\n• Data formats\n\nAPI (Application Programming Interface)\nAPI defines how applications interact with software libraries and operating systems.\nExample: Windows API",
+          },
+        ],
+      },
+      {
+        no: 44,
+        text: 'Explain the components "guest", "host", and "virtualization layer" in a virtualized environment.',
+        answer: [
+          {
+            heading: "Q44. Guest, Host, and Virtualization Layer",
+            body: "In a virtualized environment, three important components are guest, host, and virtualization layer.\n\nHost\nThe host is the physical computer or server that provides hardware resources such as CPU, memory, storage, and network.\n\nGuest\nThe guest is the virtual machine or guest operating system running on the host system. Multiple guest operating systems can run on one host.\n\nVirtualization Layer\nThe virtualization layer, also called hypervisor or VMM, sits between hardware and virtual machines.\n\nFunctions:\n• Creates virtual machines\n• Allocates resources\n• Maintains isolation among VMs",
+          },
+        ],
+      },
+      {
+        no: 45,
+        text: "Discuss the Xen paravirtualization architecture. Draw the schematic diagram and give the necessary explanation.",
+        answer: [
+          {
+            heading: "Q45. Xen Paravirtualization Architecture",
+            body: "Xen is a paravirtualized hypervisor where the guest operating systems are modified to communicate directly with the hypervisor.\n\nArchitecture Diagram:",
+            imageSrc: "/q45.png",
+            imageAlt: "Xen paravirtualization architecture diagram",
+          },
+          {
+            heading: "Working",
+            body: "1. Xen hypervisor runs directly on hardware.\n2. Guest OS is modified to use hypercalls.\n3. Hypervisor manages CPU, memory, and devices.\n4. Dom0 (Dom0) controls device management and guest VMs.\n\nAdvantages:\n• Better performance\n• Lower overhead\n\nDisadvantage:\n• Guest operating system modification required",
+          },
+        ],
+      },
+      {
+        no: 69,
+        text: "What is a middleware layer? In the Cloud, who uses the middleware layer? Who installs or manages the middleware layer in the Cloud?",
+        answer: [
+          {
+            heading: "Q69. Middleware Layer in Cloud",
+            body: "Middleware is a software layer between the operating system and applications that provides communication and management services.\n\nFunctions:\n• Database connectivity\n• Messaging services\n• Authentication\n• Application integration\n\nIn Cloud:\nMiddleware is mainly used by application developers and service providers.\n\nManagement:\nIn cloud computing, especially in PaaS, the cloud provider installs and manages the middleware layer.\n\nAdvantages:\n• Simplifies application development\n• Improves communication between applications",
+          },
+        ],
+      },
+      {
+        no: 70,
+        text: "What is a SLA? Mention at least three parameters usually specified in a SLA.",
+        answer: [
+          {
+            heading: "Q70. SLA (Service Level Agreement)",
+            body: "An SLA is a formal agreement between the cloud provider and customer that defines the expected quality of service.\n\nPurpose:\n• Defines responsibilities\n• Guarantees service quality\n• Ensures accountability\n\nCommon SLA Parameters:\n1. Availability/Uptime\n2. Response Time\n3. Security\n4. Backup and Recovery\n\nExample:\nA provider may guarantee 99.9% service availability.",
+          },
+        ],
+      },
+      {
+        no: 73,
+        text: "What do you mean by privileged and nonprivileged instructions?",
+        answer: [
+          {
+            heading: "Q73. Privileged and Nonprivileged Instructions",
+            body: "Privileged Instructions\nThese instructions execute only in kernel mode because they directly access hardware and critical resources.\n\nExamples:\n• I/O operations\n• Memory management\n• Interrupt handling\n\nFeatures:\n• Used by operating system\n• Restricted for security\n\nNonprivileged Instructions\nThese instructions can execute in user mode without affecting system security.\n\nExamples:\n• Arithmetic operations\n\nFeatures:\n• Used by application programs\n• Cannot directly control hardware",
+          },
+        ],
+      },
+      {
+        no: 74,
+        tag: "Exam Q4(c)",
+        marks: "3+1+1",
+        co: "CO2 · Understand/LOCQ",
+        text: "Explain Full Virtualization. Mention one advantage and one disadvantage of this technique.",
+        answer: [
+          {
+            heading: "Q74. Full Virtualization",
+            body: "Full virtualization is a technique where the guest operating system runs without modification on virtual hardware created by a hypervisor.\n\nWorking:\n• Hypervisor creates complete virtual hardware.\n• Guest OS behaves as if it is running on real hardware.\n• Sensitive instructions are handled by the hypervisor.\n\nAdvantage:\n• Guest operating system does not need modification\n\nDisadvantage:\n• Performance overhead due to instruction translation",
+          },
+        ],
+      },
+      {
+        no: 75,
+        text: "Explain the technique of Para Virtualization. Clearly mention one advantage and one disadvantage of this technique.",
+        answer: [
+          {
+            heading: "Q75. Para Virtualization",
+            body: "Para virtualization is a virtualization technique where the guest operating system is modified to communicate directly with the hypervisor.\n\nWorking:\n• Guest OS uses hypercalls instead of privileged instructions.\n• Hypervisor manages hardware resources efficiently.\n\nAdvantage:\n• Better performance and lower overhead\n\nDisadvantage:\n• Guest OS must be modified",
+          },
+        ],
+      },
+      {
+        no: 76,
+        text: "Write short notes on the following: i) Memory Virtualization  ii) Operating System level Virtualization",
+        answer: [
+          {
+            heading: "Q76. Short Notes",
+            body: "i) Memory Virtualization\nMemory virtualization creates virtual memory spaces for virtual machines using physical memory.\n\nFunctions:\n• Memory allocation\n• Address translation\n• Isolation between VMs\n\nAdvantages:\n• Better memory utilization\n• Supports multiple VMs simultaneously\n\nii) Operating System Level Virtualization\nOperating system level virtualization allows multiple isolated containers to run on the same operating system kernel.\n\nFeatures:\n• Shared kernel\n• Lightweight virtualization\n• Fast startup\n\nExamples:\n• Docker\n• LXC Containers\n\nAdvantages:\n• Low overhead\n• Efficient resource usage",
+          },
+        ],
+      },
+      {
+        no: 78,
+        tag: "Exam Q5(c)",
+        marks: "3+3",
+        co: "CO1 · Remember/LOCQ",
+        text: "Write short notes on the following: i) PaaS service model  ii) Network Virtualization  iii) SaaS service model  iv) IDaaS",
+        answer: [
+          {
+            heading: "Q78. Short Notes",
+            body: "i) PaaS Service Model\nPlatform as a Service (PaaS) provides a platform for application development, testing, and deployment.\n\nFeatures:\n• Development tools provided\n• Middleware managed by provider\n• Faster application development\n\nExample:\nGoogle App Engine\n\nii) Network Virtualization\nNetwork virtualization combines physical network resources into virtual networks.\n\nFeatures:\n• Virtual switches and routers\n• Flexible network management\n• Better scalability\n\nAdvantages:\n• Efficient network utilization\n• Simplified management\n\niii) SaaS Service Model\nSoftware as a Service (SaaS) provides ready-to-use software applications over the internet.\n\nFeatures:\n• Accessible through browser\n• No installation required\n• Managed by provider\n\nExample:\nMicrosoft Office 365\n\niv) IDaaS\nIdentity as a Service (IDaaS) provides cloud-based identity and access management services.\n\nFunctions:\n• Authentication\n• User management\n• Single Sign-On (SSO)\n\nAdvantages:\n• Improved security\n• Centralized identity control",
+          },
+        ],
+      },
+      {
+        no: 95,
+        text: "What is meant by the process-level techniques and system-level techniques in execution virtualization?",
+        answer: [
+          {
+            heading: "Q95. Process-Level and System-Level Techniques in Execution Virtualization",
+            body: "Process-Level Virtualization\nProcess-level virtualization virtualizes individual applications or processes.\n\nFeatures:\n• Platform independent execution\n• Runs a single application in virtual environment\n\nExample:\nJava Virtual Machine (JVM)\n\nSystem-Level Virtualization\nSystem-level virtualization virtualizes the entire operating system and hardware environment.\n\nFeatures:\n• Multiple operating systems run simultaneously\n• Uses hypervisor\n\nExample:\nVMware, VirtualBox\n\nDifference:\n• Process-level virtualizes applications only.\n• System-level virtualizes complete operating systems.",
+          },
+        ],
+      },
     ],
   },
   {
